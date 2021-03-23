@@ -8,3 +8,5 @@ First, checks if the victim has been infected before, if it wasn't it copies its
 Change the IP Address at line 18
 # How can i see if i'm infected?
 Normally, the Discord's index.js file (C:\Users\USERNAME\AppData\Roaming\discord\0.0.309\modules\discord_desktop_core\index.js) has only 1 line in it, that is:module.exports = require('./core.asar'); if the file has more than that, you might want to reinstall discord
+
+#I DON'T TAKE RESPONSABILITY OF THE USE OF THIS TOOL!
